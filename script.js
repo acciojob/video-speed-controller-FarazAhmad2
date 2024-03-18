@@ -1,17 +1,8 @@
-// const inputs = document.querySelectorAll('.controls input');
-
-//     function handleUpdate() {
-//       const suffix = this.dataset.sizing || '';
-//       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-//     }
-
-//     inputs.forEach(input => input.addEventListener('change', handleUpdate));
-//     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 const video = document.querySelector(".player__video");
 const toggleButton = document.querySelector(".toggle");
 const progress = document.querySelector(".progress");
 const progressBar = document.querySelector(".progress__filled");
-const sliders = document.querySelectorAll(".contols__slider");
+const sliders = document.querySelectorAll("[data-property]")
 const skipBtns = document.querySelectorAll("[data-skip]");
 
 function togglePlay() {
@@ -37,12 +28,16 @@ function scrub(e) {
 }
 
 function handleSliderUpdate() {
-  video[this.name] = this.value;
+  // Retrieve the name of the property from the dataset attribute of the slider
+  const propertyName = this.dataset.property;
+  // Update the corresponding property of the video element
+  video[propertyName] = this.value;
 }
 //...
 sliders.forEach((slider) => {
-  slider.addEventListener("change", handleSliderUpdate);
+  slider.addEventListener("input", handleSliderUpdate); // Use "input" event instead of "change"
 });
+
 
 function handleSkip() {
   video.currentTime += +this.dataset.skip;
