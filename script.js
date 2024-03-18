@@ -7,7 +7,7 @@
 
 //     inputs.forEach(input => input.addEventListener('change', handleUpdate));
 //     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-const video = document.querySelector(".video");
+const video = document.querySelector(".player__video");
 const toggleButton = document.querySelector(".toggle");
 const progress = document.querySelector(".progress");
 const progressBar = document.querySelector(".progress__filled");
